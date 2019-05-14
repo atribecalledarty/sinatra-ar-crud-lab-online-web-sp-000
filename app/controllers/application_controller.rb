@@ -12,12 +12,18 @@ class ApplicationController < Sinatra::Base
     
   end
   
-  get '/articles/new'
+  get '/articles/new' do
     erb :new
   end
   
-  post '/articles'
+  post '/articles' do
     @article = Article.create(title: params["title"], content: params["content"])
+    @articles = Article.all
+    
     erb :index
+  end
+  
+  get '/articles' do
+    
   end
 end
